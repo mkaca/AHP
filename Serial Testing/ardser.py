@@ -4,26 +4,24 @@ import syslog
 import time
 
 #The following line is for serial over GPIO
-port = '/dev/ttyACM2'  # change this depending on port
+port = '/dev/ttyACM0'  # change this depending on port
 
 
-ser = serial.Serial(port,9600,timeout=5)
+ser = serial.Serial(port,57600,timeout=5)
 time.sleep(2) # wait for Arduino
 
 i = 0
 
-while (i < 8):
+while (i < 350):
     # Serial write section
 
     setTempCar1 = 63
-    setTempCar2 = 37
     ser.flush()
     setTemp1 = str(setTempCar1)
-    setTemp2 = str(setTempCar2)
     print ("Python value sent: ")
     print (setTemp1)
     ser.write(setTemp1)
-    time.sleep(0.5) # I shortened this to match the new value in your Arduino code
+    time.sleep(0.01) # I shortened this to match the new value in my Arduino code
 
     # Serial read section
     print('waity boys',ser.inWaiting())

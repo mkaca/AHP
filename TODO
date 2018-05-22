@@ -1,0 +1,4 @@
+Write RVIZ (ROS) software package for transforming IMU co-ordinates into a solid model based on configuration.
+
+Step 1: Simple python data to ROS data conversion 
+Step 2: Time it. 
