@@ -60,22 +60,23 @@ degree = 25
 f = frame()
 f.rotate(angle = 1.1)    ## rotates frame for better view
 ### Move finger model 
-for degree in range(0,180,5):
-	proxI, medI, distI = makeFinger(initPosI, phalanx_ratios_index, 5, degree, f)
-	proxM, medM, distM = makeFinger(initPosM, phalanx_ratios_mid, 6, degree, f)
-	proxR, medR, distR = makeFinger(initPosR, phalanx_ratios_ring, 5, degree, f)
+for _ in range(5):
+	for degree in range(0,180,5):
+		proxI, medI, distI = makeFinger(initPosI, phalanx_ratios_index, 5, degree, f)
+		proxM, medM, distM = makeFinger(initPosM, phalanx_ratios_mid, 6, degree, f)
+		proxR, medR, distR = makeFinger(initPosR, phalanx_ratios_ring, 5, degree, f)
 
-	time.sleep(0.025)
-	distI.visible = False
-	distM.visible = False
-	distR.visible = False
-	medI.visible = False
-	medM.visible = False
-	medR.visible = False
-	proxI.visible = False
-	proxM.visible = False
-	proxR.visible = False
-	del distI, medI,proxI, distM, medM, proxM, distR, proxR, medR
+		time.sleep(0.025)
+		distI.visible = False
+		distM.visible = False
+		distR.visible = False
+		medI.visible = False
+		medM.visible = False
+		medR.visible = False
+		proxI.visible = False
+		proxM.visible = False
+		proxR.visible = False
+		del distI, medI,proxI, distM, medM, proxM, distR, proxR, medR
 
 """ TO MAKE THIS WORK WITH FULL FINGER MOTION RANGE: 
 
