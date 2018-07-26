@@ -3,11 +3,13 @@
 /**************************************************************************/
 /*!
     @file     read_simple_angle.ino
-    @author   SOSAndroid (E. Ha.)
-    @license  BSD (see license.txt)
+    @author   mskaca (E. Ha.)
+    @license  KacaCorp (see license.txt)
 
-  read a simple angle from AS5048B over I2C bus
+  read a simple angle from BNO055 over I2C bus 
 
+  REQUIRES: ardser.py to send messages to the Serial Bus
+  ANTIREQ: Ensure that the arduino console is closed
     @section  HISTORY
 
     v1.0 - First release
@@ -92,9 +94,9 @@ static void toEulerAngle(Quaternion q, double& roll, double& pitch, double& yaw)
 void setup() {
   Serial.end();
   //Start serial
-  Serial.begin(57600);
+  Serial.begin(9600);
   while (!Serial) ; //wait until Serial ready
-  Serial.print("Serial Ready");
+  Serial.println("Serial Ready");
 
 //==================================================================================================================================
     /* Initialise the IMU */
@@ -105,6 +107,9 @@ void setup() {
     Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
     while(1);
   }
+  else{
+    Serial.println("BNO CONNECTED");
+  }
   delay(1000);
   bno.setExtCrystalUse(true);
   //Serial.print("Values are printed in the following order: bnoX1, bnoY1, \
@@ -113,15 +118,11 @@ void setup() {
 
 void loop() {
 
-
-  
-
 ////////////////////////////////////////////////////////////////////////////////////////
-
  while (!Serial.available()) {} // wait for data to arrive
+ 
   // serial read section
-  while (Serial.available())
-  {
+  while (Serial.available()){
     timeStart = micros();
     delay(1);  //delay to allow buffer to fill 
     if (Serial.available() >0)
