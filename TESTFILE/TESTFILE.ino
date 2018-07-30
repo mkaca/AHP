@@ -1,7 +1,7 @@
 #include <Sort.h>
 
   //float arrayRandom[] = {0,32,264,3.5};
-  float arrayRandom[] = {0,6430,40,03,0,043,3.780};
+  float arrayRandom[] = {03,6430,40,02,20,043,3.780};
   int lengthArray = sizeof(arrayRandom)/sizeof(*arrayRandom);
   Sort sortObject = Sort(); 
   
@@ -14,8 +14,13 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   sortObject.test();
-  delay(100);
-  sortObject.sortArray(arrayRandom,lengthArray);
+  delay(40);
+  float arrayFlex = sortObject.sortArray(arrayRandom,lengthArray);
   delay(1000);
+  //for (int i = 0; i < lengthArray; i++){
+//      Serial.println(arrayFlex[0]);
+  //}
+  delay(500);
+
 
 }
