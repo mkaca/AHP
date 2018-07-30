@@ -1,26 +1,31 @@
-#include <Sort.h>
 
-  //float arrayRandom[] = {0,32,264,3.5};
-  float arrayRandom[] = {03,6430,40,02,20,043,3.780};
+#include <Sort.h>
+#include <math.h>
+
+/* NOTE: NEED TO MANUALLY CHANGE STATIC SORT CLASS LENGTH IN ORDER TO ALLOW ARRAY TO BE 
+ *  RETURNED FROM .sortObject()
+ *  
+ */
+
+  float arrayRandom[] = {40,6430,40,02,20,043,3.780};  //current length = 7
   int lengthArray = sizeof(arrayRandom)/sizeof(*arrayRandom);
   Sort sortObject = Sort(); 
-  
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
 
+void setup() {
+  Serial.begin(9600);
+  sortObject.test();
+  delay(40);
+  float* arrayFlex;
+  arrayFlex = sortObject.sortArray(arrayRandom,lengthArray);
+  delay(50);
+  for (int i = 0; i < lengthArray; i++){
+      Serial.println(arrayFlex[i]);
+  }
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  sortObject.test();
-  delay(40);
-  float arrayFlex = sortObject.sortArray(arrayRandom,lengthArray);
-  delay(1000);
-  //for (int i = 0; i < lengthArray; i++){
-//      Serial.println(arrayFlex[0]);
-  //}
-  delay(500);
-
+  
+  delay(5000);
+  exit(0);
 
 }
