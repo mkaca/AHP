@@ -12,7 +12,7 @@ time.sleep(2) # wait for Arduino
 
 i = 0
 
-while (i < 350):
+while (i < 100):
     # Serial write section
 
     setTempCar1 = 63

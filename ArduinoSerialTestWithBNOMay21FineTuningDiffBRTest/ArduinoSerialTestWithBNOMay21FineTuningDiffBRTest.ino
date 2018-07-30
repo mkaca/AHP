@@ -100,6 +100,11 @@ void setup() {
 
 //==================================================================================================================================
     /* Initialise the IMU */
+   /*** pinMode(8,OUTPUT);
+  delay(10);
+  digitalWrite(8,HIGH);
+  delay(200);
+  digitalWrite(8,LOW);*/
   if(!bno.begin())
   {
     if (!bno.begin()){Serial.print("bno1 not connected");}
@@ -110,6 +115,7 @@ void setup() {
   else{
     Serial.println("BNO CONNECTED");
   }
+  
   delay(1000);
   bno.setExtCrystalUse(true);
   //Serial.print("Values are printed in the following order: bnoX1, bnoY1, \
