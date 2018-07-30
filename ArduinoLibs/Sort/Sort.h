@@ -8,10 +8,6 @@
 #define Sort_h
 
 
-#ifndef CONTINUOUS_SERVO_REFRESH_CYCLE
-#define CONTINUOUS_SERVO_REFRESH_CYCLE 20000 // 20ms, 20000us. Standard for most servos. Decrease if the servo is jittering
-#endif // CONTINUOUS_SERVO_REFRESH_CYCLE
-
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else
@@ -31,19 +27,18 @@ typedef struct {
 class Sort
 {
 public:
-	Sort(bool ascending = true, float items[] = NULL);
+	Sort(bool _ascending = true); //, float  _items[] = NULL);
+	void test();
+	float sortArray(float arr[], int lengthArr);
 	/*void stepTo(int absoluteStep, void (*isr)() = NULL);
 	void stop();
 	int getSteps();
 	void storeSteps(int steps);
 	char getDirection();
-	bool isBusy();
+	bool isBusy();*/
 private:
-	uint8_t index;
-	int pin;
-	unsigned int minPulse;
-	unsigned int maxPulse;
-*/
+	bool ascending;
+
 };
 
 #endif // ContinuousServo_h
