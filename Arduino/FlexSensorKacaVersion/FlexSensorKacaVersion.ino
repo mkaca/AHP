@@ -28,12 +28,16 @@ Sort sortobject = Sort();
 void setup() 
 {
   Serial.begin(9600);
+  delay(200);
   pinMode(FLEX_PIN, INPUT);
   //calibrate for straight resistance
   int arrSize = 7;
   float arrayCalib[arrSize];
   for (int i = 0; i++; i < arrSize){
-    arrayCalib[i] = analogRead(FLEX_PIN) * VCC / 1023.0;
+    //delay(50);
+    arrayCalib[i] = analogRead(FLEX_PIN);
+    Serial.println(arrayCalib[i]);
+    
   }
   float* arrayFlex = sortobject.sortArray(arrayCalib, arrSize);
   for (int j=0;j++; j < arrSize){
@@ -52,7 +56,7 @@ void loop()
   Serial.println(flexADC);
   Serial.println(flexV);
   Serial.println(" ");
-  delay(2000);
+  delay(500);
   //Serial.println("Resistance: " + String(flexR) + " ohms");
 
   // Use the calculated resistance to estimate the sensor's
